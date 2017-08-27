@@ -1,0 +1,35 @@
+.login{
+	width: 334px;
+	height: 374px; 
+	background: #d6d6d6;
+}
+
+h3{
+	padding-top: 30px;
+}
+
+input{
+	width: 282px;
+	height: 38px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 16px;
+}
+
+button{
+	width: 284px;
+	height: 40px;
+	font-size: 16px;
+}
+
+.forget{
+	margin-top: 30px;
+	margin-right: -215px;
+}
+.rightBorder{
+	border-color="#00EE00";
+}
+
+.errorBorder{
+	border-color="#EE0000";
+}
