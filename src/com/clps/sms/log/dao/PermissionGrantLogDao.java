@@ -45,7 +45,7 @@ public interface PermissionGrantLogDao {
 	 *            内容 （成功）
 	 * @param pgl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param pgl_created_id
+	 * @param pgl_created_name
 	 *            创建人名 （）
 	 * @param begin
 	 *            查询起点 （）
@@ -54,7 +54,7 @@ public interface PermissionGrantLogDao {
 	 * @return
 	 */
 	List<PermissionGrantLog> queryPermissionGrantLogs(String pgl_action, String pgl_action_content, String pgl_type,
-			Integer pgl_created_id, int begin, int num);
+			String pgl_created_name, int begin, int num);
 
 	/**
 	 * 
@@ -85,7 +85,7 @@ public interface PermissionGrantLogDao {
 	 *            内容 （成功）
 	 * @param pgl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param pgl_created_id
+	 * @param pgl_created_name
 	 *            创建人名 （）
 	 * @param start
 	 *            时间范围 （）
@@ -98,6 +98,6 @@ public interface PermissionGrantLogDao {
 	 * @return
 	 */
 	List<PermissionGrantLog> queryPermissionGrantLogs(String pgl_action, String pgl_action_content, String pgl_type,
-			Integer pgl_created_id, String start, String end, int begin, int num);
+			String pgl_created_name, String start, String end, int begin, int num);
 
 }

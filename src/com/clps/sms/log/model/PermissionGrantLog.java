@@ -22,6 +22,11 @@ public class PermissionGrantLog implements Serializable {
 	private Integer  pgl_created_id;//PGL_CREATED_ID
 	private String  pgl_type;//PGL_TYPE
 	private String acc_name;//ACC_NAME
+	
+	
+	public PermissionGrantLog() {
+		super();
+	}
 	public PermissionGrantLog(Integer pgl_id, String pgl_action, String pgl_action_content, String pgl_created_date,
 			Integer pgl_created_id, String pgl_type) {
 		super();

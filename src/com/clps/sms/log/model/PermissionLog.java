@@ -16,6 +16,11 @@ public class PermissionLog implements Serializable {
 	private Integer pl_created_id;//PL_CREATED_ID
 	private String pl_type;//PL_TYPE
 	private String acc_name;//ACC_NAME
+	
+	
+	public PermissionLog() {
+		super();
+	}
 	public PermissionLog(Integer pl_id, String pl_action, String pl_action_content, String pl_created_date,
 			Integer pl_created_id, String pl_type) {
 		super();
@@ -35,7 +40,7 @@ public class PermissionLog implements Serializable {
 	public String getPl_action() {
 		return pl_action;
 	}
-	public void setPer_action(String pl_action) {
+	public void setPl_action(String pl_action) {
 		this.pl_action = pl_action;
 	}
 	public String getPl_action_content() {

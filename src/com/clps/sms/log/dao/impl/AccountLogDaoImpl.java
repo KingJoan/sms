@@ -74,12 +74,12 @@ public class AccountLogDaoImpl extends BaseDaoImpl<AccountLog> implements Accoun
 	
 	@Override
 	public List<AccountLog> queryAccountLogs(String al_action, String al_action_content, String al_type,
-			Integer al_created_id, int begin, int num) {
+			String al_created_name, int begin, int num) {
 		Object[] parameter=new Object[]{
 				 "%"+al_action+"%",  
 				 "%"+al_action_content+"%",   
 				 "%"+al_type+"%",
-				 al_created_id,
+				 al_created_name,
 				 begin,
 				 num
 		};
@@ -89,12 +89,12 @@ public class AccountLogDaoImpl extends BaseDaoImpl<AccountLog> implements Accoun
 	
 	@Override
 	public List<AccountLog> queryAccountLogs(String al_action, String al_action_content,
-			String al_type, Integer al_created_id, String start, String end, int begin, int num) {
+			String al_type, String al_created_name, String start, String end, int begin, int num) {
 		Object[] parameter=new Object[]{
 				 "%"+al_action+"%",  
 				 "%"+al_action_content+"%",   
 				 "%"+al_type+"%",
-				 al_created_id,
+				 al_created_name,
 				 start,
 				 end,
 				 begin,

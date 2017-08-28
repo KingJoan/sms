@@ -22,11 +22,11 @@ public interface RoleLogDao {
 
 	/**
 	 * 
-	 * @param per_action
+	 * @param rl_action
 	 *            动作 （ 增 删 改 查）
-	 * @param per_action_content
+	 * @param rl_action_content
 	 *            内容 （成功）
-	 * @param per_type
+	 * @param rl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
 	 * @param begin
 	 *            查询起点 （）
@@ -38,13 +38,13 @@ public interface RoleLogDao {
 
 	/**
 	 * 
-	 * @param per_action
+	 * @param rl_action
 	 *            动作 （ 增 删 改 查）
-	 * @param per_action_content
+	 * @param rl_action_content
 	 *            内容 （成功）
-	 * @param per_type
+	 * @param rl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param per_created_id
+	 * @param rl_created_name
 	 *            创建人名 （）
 	 * @param begin
 	 *            查询起点 （）
@@ -53,15 +53,15 @@ public interface RoleLogDao {
 	 * @return
 	 */
 	List<RoleLog> queryRoleLogs(String rl_action, String rl_action_content, String rl_type,
-			Integer rl_created_id, int begin, int num);
+			String rl_created_name, int begin, int num);
 
 	/**
 	 * 
-	 * @param per_action
+	 * @param rl_action
 	 *            动作 （ 增 删 改 查）
-	 * @param per_action_content
+	 * @param rl_action_content
 	 *            内容 （成功）
-	 * @param per_type
+	 * @param rl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
 	 * @param start
 	 *            时间范围 （）
@@ -78,13 +78,13 @@ public interface RoleLogDao {
 
 	/**
 	 * 
-	 * @param per_action
+	 * @param rl_action
 	 *            动作 （ 增 删 改 查）
-	 * @param per_action_content
+	 * @param rl_action_content
 	 *            内容 （成功）
-	 * @param per_type
+	 * @param rl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param per_created_id
+	 * @param rl_created_name
 	 *            创建人名 （）
 	 * @param start
 	 *            时间范围 （）
@@ -97,6 +97,6 @@ public interface RoleLogDao {
 	 * @return
 	 */
 	List<RoleLog> queryRoleLogs(String rl_action, String rl_action_content, String rl_type,
-			Integer rl_created_id, String start, String end, int begin, int num);
+			String rl_created_name, String start, String end, int begin, int num);
 
 }

@@ -31,7 +31,7 @@ public interface LogAccountService {
 	 * @param num								数量			（）	
 	 * @return JSONArray
 	 */
-	JSONArray queryAccountLogs(String al_action, String al_action_content, String al_type,Integer al_created_id,int begin, int num);
+	JSONArray queryAccountLogs(String al_action, String al_action_content, String al_type,String al_created_name,int begin, int num);
 	
 	/**
 	 * 
@@ -58,6 +58,6 @@ public interface LogAccountService {
 	 * @param num								数量			（）	
 	 * @return JSONArray
 	 */
-	JSONArray queryAccountLogs(String al_action, String al_action_content, String al_type,Integer al_created_id,String start,String end,int begin, int num);
+	JSONArray queryAccountLogs(String al_action, String al_action_content, String al_type,String al_created_name,String start,String end,int begin, int num);
 
 }

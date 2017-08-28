@@ -22,11 +22,11 @@ public interface SysParameterLogDao {
 
 	/**
 	 * 
-	 * @param rl_action
+	 * @param spl_action
 	 *            动作 （ 增 删 改 查）
-	 * @param rl_action_content
+	 * @param spl_action_content
 	 *            内容 （成功）
-	 * @param rl_type
+	 * @param spl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
 	 * @param begin
 	 *            查询起点 （）
@@ -38,13 +38,13 @@ public interface SysParameterLogDao {
 
 	/**
 	 * 
-	 * @param rl_action
+	 * @param spl_action
 	 *            动作 （ 增 删 改 查）
-	 * @param rl_action_content
+	 * @param spl_action_content
 	 *            内容 （成功）
-	 * @param rl_type
+	 * @param spl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param rl_created_id
+	 * @param spl_created_name
 	 *            创建人名 （）
 	 * @param begin
 	 *            查询起点 （）
@@ -53,15 +53,15 @@ public interface SysParameterLogDao {
 	 * @return
 	 */
 	List<SysParameterLog> querySysParameterLogs(String spl_action, String spl_action_content, String spl_type,
-			Integer spl_created_id, int begin, int num);
+			String spl_created_name, int begin, int num);
 
 	/**
 	 * 
-	 * @param rl_action
+	 * @param spl_action
 	 *            动作 （ 增 删 改 查）
-	 * @param rl_action_content
+	 * @param spl_action_content
 	 *            内容 （成功）
-	 * @param rl_type
+	 * @param spl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
 	 * @param start
 	 *            时间范围 （）
@@ -78,13 +78,13 @@ public interface SysParameterLogDao {
 
 	/**
 	 * 
-	 * @param rl_action
+	 * @param spl_action
 	 *            动作 （ 增 删 改 查）
-	 * @param rl_action_content
+	 * @param spl_action_content
 	 *            内容 （成功）
-	 * @param rl_type
+	 * @param spl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param rl_created_id
+	 * @param spl_created_name
 	 *            创建人名 （）
 	 * @param start
 	 *            时间范围 （）
@@ -97,6 +97,6 @@ public interface SysParameterLogDao {
 	 * @return
 	 */
 	List<SysParameterLog> querySysParameterLogs(String spl_action, String spl_action_content, String spl_type,
-			Integer spl_created_id, String start, String end, int begin, int num);
+			String spl_created_name, String start, String end, int begin, int num);
 
 }

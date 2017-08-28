@@ -23,6 +23,11 @@ public class MenuLog implements Serializable {
 	private Integer ml_created_id;//ML_CREATED_ID
 	private String ml_type;//ML_TYPE
 	private String acc_name;//ACC_NAME
+	
+	
+	public MenuLog() {
+		super();
+	}
 	public MenuLog(Integer ml_id, String ml_action, String ml_action_content, String ml_created_date,
 			Integer ml_created_id, String ml_type) {
 		super();

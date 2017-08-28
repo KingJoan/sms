@@ -25,6 +25,12 @@ public class AccountMeetingLog implements Serializable{
 	private Integer aml_created_id;//AML_CREATED_ID
 	private String aml_type;//AML_TYPE
 	private String acc_name;//ACC_NAME
+	
+	
+	
+	public AccountMeetingLog() {
+		super();
+	}
 	public AccountMeetingLog(Integer aml_id, String aml_action, String aml_action_content, String aml_created_date,
 			Integer aml_created_id, String aml_type) {
 		super();

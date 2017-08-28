@@ -23,6 +23,11 @@ public class RoleLog implements Serializable {
 	private Integer rl_created_id;//RL_CREATED_ID
 	private String rl_type;//RL_TYPE
 	private String acc_name;//ACC_NAME
+	
+	
+	public RoleLog() {
+		super();
+	}
 	public RoleLog(Integer rl_id, String rl_action, String rl_action_content, String rl_created_date,
 			Integer rl_created_id, String rl_type) {
 		super();

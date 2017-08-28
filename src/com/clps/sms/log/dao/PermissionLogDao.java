@@ -44,7 +44,7 @@ public interface PermissionLogDao {
 	 *            内容 （成功）
 	 * @param pl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param pl_created_id
+	 * @param pl_created_name
 	 *            创建人名 （）
 	 * @param begin
 	 *            查询起点 （）
@@ -53,7 +53,7 @@ public interface PermissionLogDao {
 	 * @return
 	 */
 	List<PermissionLog> queryPermissionLogs(String pl_action, String pl_action_content, String pl_type,
-			Integer pl_created_id, int begin, int num);
+			String pl_created_name, int begin, int num);
 
 	/**
 	 * 
@@ -84,7 +84,7 @@ public interface PermissionLogDao {
 	 *            内容 （成功）
 	 * @param pl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param pl_created_id
+	 * @param pl_created_name
 	 *            创建人名 （）
 	 * @param start
 	 *            时间范围 （）
@@ -97,6 +97,6 @@ public interface PermissionLogDao {
 	 * @return
 	 */
 	List<PermissionLog> queryPermissionLogs(String pl_action, String pl_action_content, String pl_type,
-			Integer pl_created_id, String start, String end, int begin, int num);
+			String pl_created_name, String start, String end, int begin, int num);
 
 }

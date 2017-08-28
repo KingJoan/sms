@@ -2,6 +2,8 @@ package com.clps.sms.log.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.clps.sms.log.dao.MenuLogDao;
 import com.clps.sms.log.model.MenuLog;
 import com.clps.sms.util.db.BaseDaoImpl;
@@ -13,17 +15,18 @@ import com.clps.sms.util.db.BaseDaoImpl;
  * 
  * @since 1.0
  */
+@Component
 public class MenuLogDaoImpl extends BaseDaoImpl<MenuLog>implements MenuLogDao {
 	
-private static final String HEAD="SELECT MENU_LOG.ML_ID, MENU_LOG.ML_ACTION, MENU_LOG.ML_ACTION_CONTENT, MENU_LOG.ML_CREATED_DATE, MENU_LOG.ML_CREATED_ID, MENU_LOG.ML_TYPE, MENU.MENU_NAME FROM MENU_LOG , MENU WHERE MENU_LOG.ML_CREATED_ID = MENU.MENU_ID ";
+private static final String HEAD="SELECT MENU_LOG.ML_ID, MENU_LOG.ML_ACTION, MENU_LOG.ML_ACTION_CONTENT, MENU_LOG.ML_CREATED_DATE, MENU_LOG.ML_CREATED_ID, MENU_LOG.ML_TYPE, ACCOUNT.ACC_NAME FROM MENU_LOG , ACCOUNT WHERE MENU_LOG.ML_CREATED_ID = ACCOUNT.ACC_ID ";
 	
 	private static final String QUERYMENULOG=HEAD+"AND MENU_LOG.ML_ACTION LIKE ? AND MENU_LOG.ML_ACTION_CONTENT LIKE ? AND MENU_LOG.ML_TYPE LIKE ? LIMIT ?,  ?";
 	
 	private static final String QUERYMENULOGSBYTIMERANGE=HEAD+"AND MENU_LOG.ML_ACTION LIKE ? AND MENU_LOG.ML_ACTION_CONTENT LIKE ? AND MENU_LOG.ML_TYPE LIKE ? AND MENU_LOG.ML_CREATED_DATE >= ? AND MENU_LOG.ML_CREATED_DATE <= ? LIMIT ?,  ?";
 	
-	private static final String QUERYMENULOGSBYCREATEDNAME=HEAD+"AND MENU_LOG.ML_ACTION LIKE ? AND MENU_LOG.ML_ACTION_CONTENT LIKE ? AND MENU_LOG.ML_TYPE LIKE ? AND MENU.MENU_NAME = ? LIMIT ?,  ?";
+	private static final String QUERYMENULOGSBYCREATEDNAME=HEAD+"AND MENU_LOG.ML_ACTION LIKE ? AND MENU_LOG.ML_ACTION_CONTENT LIKE ? AND MENU_LOG.ML_TYPE LIKE ? AND ACCOUNT.ACC_NAME = ? LIMIT ?,  ?";
 	
-	private static final String QUERYMENULOGSBYCREATEDNAMEANDTIMERANGE=HEAD+"AND MENU_LOG.ML_ACTION LIKE ? AND MENU_LOG.ML_ACTION_CONTENT LIKE ? AND MENU_LOG.ML_TYPE LIKE ? AND MENU.MENU_NAME = ? AND MENU_LOG.ML_CREATED_DATE >= ? AND MENU_LOG.ML_CREATED_DATE <= ? LIMIT ?,  ?";
+	private static final String QUERYMENULOGSBYCREATEDNAMEANDTIMERANGE=HEAD+"AND MENU_LOG.ML_ACTION LIKE ? AND MENU_LOG.ML_ACTION_CONTENT LIKE ? AND MENU_LOG.ML_TYPE LIKE ? AND ACCOUNT.ACC_NAME = ? AND MENU_LOG.ML_CREATED_DATE >= ? AND MENU_LOG.ML_CREATED_DATE <= ? LIMIT ?,  ?";
 
 	@Override
 	public List<MenuLog> queryAll() {
@@ -48,17 +51,17 @@ private static final String HEAD="SELECT MENU_LOG.ML_ID, MENU_LOG.ML_ACTION, MEN
 
 	@Override
 	public List<MenuLog> queryMenuLogs(String ml_action, String ml_action_content, String ml_type,
-			Integer ml_created_id, int begin, int num) {
+			String ml_created_name, int begin, int num) {
 		// TODO Auto-generated method stub
 		Object[] parameter=new Object[]{
 				"%"+ml_action+"%",  
 				 "%"+ml_action_content+"%",   
 				 "%"+ml_type+"%",
-				 ml_created_id,
+				 ml_created_name,
 				 begin,
 				 num
 		};
-		List<MenuLog> menuLogs=query(QUERYMENULOGSBYTIMERANGE, parameter);
+		List<MenuLog> menuLogs=query(QUERYMENULOGSBYCREATEDNAME, parameter);
 		return menuLogs;
 	}
 
@@ -75,19 +78,19 @@ private static final String HEAD="SELECT MENU_LOG.ML_ID, MENU_LOG.ML_ACTION, MEN
 				 begin,
 				 num
 		};
-		List<MenuLog> menuLogs=query(QUERYMENULOGSBYCREATEDNAME,parameter);
+		List<MenuLog> menuLogs=query(QUERYMENULOGSBYTIMERANGE,parameter);
 		return menuLogs;
 	}
 
 	@Override
 	public List<MenuLog> queryMenuLogs(String ml_action, String ml_action_content, String ml_type,
-			Integer ml_created_id, String start, String end, int begin, int num) {
+			String ml_created_name, String start, String end, int begin, int num) {
 		// TODO Auto-generated method stub
 		Object[] parameter=new Object[]{
 				 "%"+ml_action+"%",  
 				 "%"+ml_action_content+"%",   
 				 "%"+ml_type+"%",
-				 ml_created_id,
+				 ml_created_name,
 				 start,
 				 end,
 				 begin,

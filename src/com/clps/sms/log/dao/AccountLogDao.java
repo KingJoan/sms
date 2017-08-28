@@ -3,6 +3,7 @@ package com.clps.sms.log.dao;
 import java.util.List;
 
 import com.clps.sms.log.model.AccountLog;
+import com.sun.xml.internal.bind.v2.runtime.Name;
 
 /**
  * 
@@ -44,7 +45,7 @@ public interface AccountLogDao {
 	 *            内容 （成功）
 	 * @param al_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param al_created_id
+	 * @param al_created_name
 	 *            创建人名 （）
 	 * @param begin
 	 *            查询起点 （）
@@ -53,7 +54,7 @@ public interface AccountLogDao {
 	 * @return
 	 */
 	List<AccountLog> queryAccountLogs(String al_action, String al_action_content, String al_type,
-			Integer al_created_id, int begin, int num);
+			String al_created_name, int begin, int num);
 
 	/**
 	 * 
@@ -84,7 +85,7 @@ public interface AccountLogDao {
 	 *            内容 （成功）
 	 * @param al_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param al_created_id
+	 * @param al_created_name
 	 *            创建人名 （）
 	 * @param start
 	 *            时间范围 （）
@@ -97,6 +98,6 @@ public interface AccountLogDao {
 	 * @return
 	 */
 	List<AccountLog> queryAccountLogs(String al_action, String al_action_content, String al_type,
-			Integer al_created_id, String start, String end, int begin, int num);
+			String al_created_name, String start, String end, int begin, int num);
 
 }

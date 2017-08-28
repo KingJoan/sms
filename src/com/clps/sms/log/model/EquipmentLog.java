@@ -16,6 +16,11 @@ public class EquipmentLog implements Serializable {
 	private Integer el_created_id;//EL_CREATED_ID
 	private String el_type;//EL_TYPE
 	private String acc_name;//ACC_NAME
+	
+	
+	public EquipmentLog() {
+		super();
+	}
 	public EquipmentLog(Integer el_id, String el_action, String el_action_content, String el_created_date,
 			Integer el_created_id, String el_type) {
 		super();

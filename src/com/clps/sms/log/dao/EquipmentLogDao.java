@@ -44,7 +44,7 @@ public interface EquipmentLogDao {
 	 *            内容 （成功）
 	 * @param el_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param el_created_id
+	 * @param el_created_name
 	 *            创建人名 （）
 	 * @param begin
 	 *            查询起点 （）
@@ -53,7 +53,7 @@ public interface EquipmentLogDao {
 	 * @return
 	 */
 	List<EquipmentLog> queryEquipmentLogs(String el_action, String el_action_content, String el_type,
-			Integer el_created_id, int begin, int num);
+			String el_created_name, int begin, int num);
 
 	/**
 	 * 
@@ -84,7 +84,7 @@ public interface EquipmentLogDao {
 	 *            内容 （成功）
 	 * @param el_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param el_created_id
+	 * @param el_created_name
 	 *            创建人名 （）
 	 * @param start
 	 *            时间范围 （）
@@ -97,6 +97,6 @@ public interface EquipmentLogDao {
 	 * @return
 	 */
 	List<EquipmentLog> queryEquipmentLogs(String el_action, String el_action_content, String el_type,
-			Integer el_created_id, String start, String end, int begin, int num);
+			String el_created_name, String start, String end, int begin, int num);
 
 }

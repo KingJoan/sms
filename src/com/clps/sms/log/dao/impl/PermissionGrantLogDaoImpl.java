@@ -2,6 +2,8 @@ package com.clps.sms.log.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.clps.sms.log.dao.PermissionGrantLogDao;
 import com.clps.sms.log.model.PermissionGrantLog;
 import com.clps.sms.util.db.BaseDaoImpl;
@@ -13,17 +15,18 @@ import com.clps.sms.util.db.BaseDaoImpl;
  * 
  * @since 1.0
  */
+@Component
 public class PermissionGrantLogDaoImpl extends BaseDaoImpl<PermissionGrantLog>implements PermissionGrantLogDao {
 	
-	private static final String HEAD="SELECT PERMISSION_GRANT_LOG.PGL_ID, PERMISSION_GRANT_LOG.PGL_ACTION, PERMISSION_GRANT_LOG.PGL_ACTION_CONTENT, PERMISSION_GRANT_LOG.PGL_CREATED_DATE, PERMISSION_GRANT_LOG.PGL_CREATED_ID, PERMISSION_GRANT_LOG.PGL_TYPE, PERMISSION_GRANT.PG_NAME FROM PERMISSION_GRANT_LOG , PERMISSION_GRANT WHERE PERMISSION_GRANT_LOG.PGL_CREATED_ID = PERMISSION.PG_ID ";
+	private static final String HEAD="SELECT PERMISSION_GRANT_LOG.PGL_ID, PERMISSION_GRANT_LOG.PGL_ACTION, PERMISSION_GRANT_LOG.PGL_ACTION_CONTENT, PERMISSION_GRANT_LOG.PGL_CREATED_DATE, PERMISSION_GRANT_LOG.PGL_CREATED_ID, PERMISSION_GRANT_LOG.PGL_TYPE, ACCOUNT.ACC_NAME FROM PERMISSION_GRANT_LOG , ACCOUNT WHERE PERMISSION_GRANT_LOG.PGL_CREATED_ID = ACCOUNT.ACC_ID ";
 	
 	private static final String QUERYPERMISSIONGRANTLOG=HEAD+"AND PERMISSION_GRANT_LOG.PGL_ACTION LIKE ? AND PERMISSION_GRANT_LOG.PGL_ACTION_CONTENT LIKE ? AND PERMISSION_GRANT_LOG.PGL_TYPE LIKE ? LIMIT ?,  ?";
 	
-	private static final String QUERYPERMISSIONGRANTLOGSBYTIMERANGE=HEAD+"AND PERMISSION_GRANT_LOG.PGL_ACTION LIKE ? AND PERMISSION_GRANT_LOG.PGL_ACTION_CONTENT LIKE ? PERMISSION_GRANT_LOG.PGL_TYPE LIKE ? AND PERMISSION_GRANT_LOG.PGL_CREATED_DATE >= ? AND PERMISSION_GRANT_LOG.PGL_CREATED_DATE <= ? LIMIT ?,  ?";
+	private static final String QUERYPERMISSIONGRANTLOGSBYTIMERANGE=HEAD+"AND PERMISSION_GRANT_LOG.PGL_ACTION LIKE ? AND PERMISSION_GRANT_LOG.PGL_ACTION_CONTENT LIKE ?  AND PERMISSION_GRANT_LOG.PGL_TYPE LIKE ? AND PERMISSION_GRANT_LOG.PGL_CREATED_DATE >= ? AND PERMISSION_GRANT_LOG.PGL_CREATED_DATE <= ? LIMIT ?,  ?";
 	
-	private static final String QUERYPERMISSIONGRANTLOGSBYCREATEDNAME=HEAD+"AND PERMISSION_GRANT_LOG.PGL_ACTION LIKE ? AND PERMISSION_GRANT_LOG.PGL_ACTION_CONTENT LIKE ? AND PERMISSION_GRANT_LOG.PGL_TYPE LIKE ? AND PERMISSION.PG_NAME = ? LIMIT ?,  ?";
+	private static final String QUERYPERMISSIONGRANTLOGSBYCREATEDNAME=HEAD+"AND PERMISSION_GRANT_LOG.PGL_ACTION LIKE ? AND PERMISSION_GRANT_LOG.PGL_ACTION_CONTENT LIKE ? AND PERMISSION_GRANT_LOG.PGL_TYPE LIKE ? AND ACCOUNT.ACC_NAME = ? LIMIT ?,  ?";
 	
-	private static final String QUERYPERMISSIONGRANTLOGSBYCREATEDNAMEANDTIMERANGE=HEAD+"AND PERMISSION_GRANT_LOG.PGL_ACTION LIKE ? AND PERMISSION_GRANT_LOG.PGL_ACTION_CONTENT LIKE ? AND PERMISSION_GRANT_LOG.PGL_TYPE LIKE ? AND PERMISSION_GRANT.PG_NAME = ? AND PERMISSION_GRANT_LOG.PGL_CREATED_DATE >= ? AND PERMISSION_GRANT_LOG.PGL_CREATED_DATE <= ? LIMIT ?,  ?";
+	private static final String QUERYPERMISSIONGRANTLOGSBYCREATEDNAMEANDTIMERANGE=HEAD+"AND PERMISSION_GRANT_LOG.PGL_ACTION LIKE ? AND PERMISSION_GRANT_LOG.PGL_ACTION_CONTENT LIKE ? AND PERMISSION_GRANT_LOG.PGL_TYPE LIKE ? AND ACCOUNT.ACC_NAME = ? AND PERMISSION_GRANT_LOG.PGL_CREATED_DATE >= ? AND PERMISSION_GRANT_LOG.PGL_CREATED_DATE <= ? LIMIT ?,  ?";
 
 	@Override
 	public List<PermissionGrantLog> queryAll() {
@@ -49,17 +52,17 @@ public class PermissionGrantLogDaoImpl extends BaseDaoImpl<PermissionGrantLog>im
 
 	@Override
 	public List<PermissionGrantLog> queryPermissionGrantLogs(String pgl_action, String pgl_action_content,
-			String pgl_type, Integer pgl_created_id, int begin, int num) {
+			String pgl_type, String pgl_created_name, int begin, int num) {
 		// TODO Auto-generated method stub
 		Object[] parameter=new Object[]{
 				"%"+pgl_action+"%",  
 				 "%"+pgl_action_content+"%",   
 				 "%"+pgl_type+"%",
-				 pgl_created_id,
+				 pgl_created_name,
 				 begin,
 				 num
 		};
-		List<PermissionGrantLog> permissionGrantLogs=query(QUERYPERMISSIONGRANTLOGSBYTIMERANGE, parameter);
+		List<PermissionGrantLog> permissionGrantLogs=query(QUERYPERMISSIONGRANTLOGSBYCREATEDNAME, parameter);
 		return permissionGrantLogs;
 	}
 
@@ -76,19 +79,19 @@ public class PermissionGrantLogDaoImpl extends BaseDaoImpl<PermissionGrantLog>im
 				 begin,
 				 num
 		};
-		List<PermissionGrantLog> permissionGrantLogs=query(QUERYPERMISSIONGRANTLOGSBYCREATEDNAME,parameter);
+		List<PermissionGrantLog> permissionGrantLogs=query(QUERYPERMISSIONGRANTLOGSBYTIMERANGE,parameter);
 		return permissionGrantLogs;
 	}
 
 	@Override
 	public List<PermissionGrantLog> queryPermissionGrantLogs(String pgl_action, String pgl_action_content,
-			String pgl_type, Integer pgl_created_id, String start, String end, int begin, int num) {
+			String pgl_type, String pgl_created_name, String start, String end, int begin, int num) {
 		// TODO Auto-generated method stub
 		Object[] parameter=new Object[]{
 				 "%"+pgl_action+"%",  
 				 "%"+pgl_action_content+"%",   
 				 "%"+pgl_type+"%",
-				 pgl_created_id,
+				 pgl_created_name,
 				 start,
 				 end,
 				 begin,

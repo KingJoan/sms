@@ -33,8 +33,8 @@ public class LogAccountServiceImpl implements LogAccountService{
 
 	@Override
 	public JSONArray queryAccountLogs(String al_action, String al_action_content, String al_type,
-			Integer al_created_id, int begin, int num) {
-		JSONArray jsonArray=JSONArray.fromObject(accountLogDao.queryAccountLogs(al_action, al_action_content, al_type, al_created_id, begin, num));
+			String al_created_name, int begin, int num) {
+		JSONArray jsonArray=JSONArray.fromObject(accountLogDao.queryAccountLogs(al_action, al_action_content, al_type, al_created_name, begin, num));
 		return jsonArray;
 	}
 
@@ -47,8 +47,8 @@ public class LogAccountServiceImpl implements LogAccountService{
 
 	@Override
 	public JSONArray queryAccountLogs(String al_action, String al_action_content, String al_type,
-			Integer al_created_id, String start, String end, int begin, int num) {
-		JSONArray jsonArray=JSONArray.fromObject(accountLogDao.queryAccountLogs(al_action, al_action_content, al_type, al_created_id, start, end, begin, num));
+			String al_created_name, String start, String end, int begin, int num) {
+		JSONArray jsonArray=JSONArray.fromObject(accountLogDao.queryAccountLogs(al_action, al_action_content, al_type, al_created_name, start, end, begin, num));
 		return jsonArray;
 	}
 }

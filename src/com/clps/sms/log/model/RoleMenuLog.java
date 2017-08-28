@@ -23,6 +23,11 @@ public class RoleMenuLog implements Serializable {
 	private Integer rml_created_id;//RML_CREATED_ID
 	private String rml_type;//RML_TYPE
 	private String acc_name;//ACC_NAME
+	
+	
+	public RoleMenuLog() {
+		super();
+	}
 	public RoleMenuLog(Integer rml_id, String rml_action, String rml_action_content, String rml_created_date,
 			Integer rml_created_id, String rml_type) {
 		super();

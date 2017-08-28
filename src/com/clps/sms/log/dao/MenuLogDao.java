@@ -44,7 +44,7 @@ public interface MenuLogDao {
 	 *            内容 （成功）
 	 * @param ml_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param ml_created_id
+	 * @param ml_created_name
 	 *            创建人名 （）
 	 * @param begin
 	 *            查询起点 （）
@@ -53,7 +53,7 @@ public interface MenuLogDao {
 	 * @return
 	 */
 	List<MenuLog> queryMenuLogs(String ml_action, String ml_action_content, String ml_type,
-			Integer ml_created_id, int begin, int num);
+			String ml_created_name, int begin, int num);
 
 	/**
 	 * 
@@ -84,7 +84,7 @@ public interface MenuLogDao {
 	 *            内容 （成功）
 	 * @param ml_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param ml_created_id
+	 * @param ml_created_name
 	 *            创建人名 （）
 	 * @param start
 	 *            时间范围 （）
@@ -97,6 +97,6 @@ public interface MenuLogDao {
 	 * @return
 	 */
 	List<MenuLog> queryMenuLogs(String ml_action, String ml_action_content, String ml_type,
-			Integer ml_created_id, String start, String end, int begin, int num);
+			String ml_created_name, String start, String end, int begin, int num);
 
 }

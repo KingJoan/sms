@@ -2,6 +2,8 @@ package com.clps.sms.log.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.clps.sms.log.dao.EquipmentLogDao;
 import com.clps.sms.log.model.EquipmentLog;
 import com.clps.sms.util.db.BaseDaoImpl;
@@ -13,17 +15,18 @@ import com.clps.sms.util.db.BaseDaoImpl;
  * 
  * @since 1.0
  */
+@Component
 public class EquipmentLogDaoImpl extends BaseDaoImpl<EquipmentLog>implements EquipmentLogDao {
 	
-	private static final String HEAD="SELECT EQUIPMENT_LOG.EL_ID, EQUIPMENTLOG.EL_ACTION, EQUIPMENT_LOG.EL_ACTION_CONTENT, EQUIPMENT_LOG.EL_CREATED_DATE, EQUIPMENT_LOG.EL_CREATED_ID, EQUIPMENT_LOG.EL_TYPE, EQUIPMENT_.EQU_NAME FROM EQUIPMENT_LOG , EQUIPMENT WHERE EQUIPMENT_LOG.EL_CREATED_ID = EQUIPMENT.EQU_ID ";
+	private static final String HEAD="SELECT EQUIPMENT_LOG.EL_ID, EQUIPMENT_LOG.EL_ACTION, EQUIPMENT_LOG.EL_ACTION_CONTENT, EQUIPMENT_LOG.EL_CREATED_DATE, EQUIPMENT_LOG.EL_CREATED_ID, EQUIPMENT_LOG.EL_TYPE, ACCOUNT.ACC_NAME FROM EQUIPMENT_LOG , ACCOUNT WHERE EQUIPMENT_LOG.EL_CREATED_ID = ACCOUNT.ACC_ID ";
 	
 	private static final String QUERYMEQUIPMENTLOG=HEAD+"AND EQUIPMENT_LOG.EL_ACTION LIKE ? AND EQUIPMENT_LOG.EL_ACTION_CONTENT LIKE ? AND EQUIPMENT_LOG.EL_TYPE LIKE ? LIMIT ?,  ?";
 	
 	private static final String QUERYEQUIPMENTLOGSBYTIMERANGE=HEAD+"AND EQUIPMENT_LOG.EL_ACTION LIKE ? AND EQUIPMENT_LOG.EL_ACTION_CONTENT LIKE ? AND EQUIPMENT_LOG.EL_TYPE LIKE ? AND EQUIPMENT_LOG.EL_CREATED_DATE >= ? AND EQUIPMENT_LOG.EL_CREATED_DATE <= ? LIMIT ?,  ?";
 	
-	private static final String QUERYMEETINGLOGSBYCREATEDNAME=HEAD+"AND EQUIPMENT_LOG.EL_ACTION LIKE ? AND EQUIPMENT_LOG.EL_ACTION_CONTENT LIKE ? AND EQUIPMENT_LOG.RL_TYPE LIKE ? AND EQUIPMENT.EQU_NAME = ? LIMIT ?,  ?";
+	private static final String QUERYMEETINGLOGSBYCREATEDNAME=HEAD+"AND EQUIPMENT_LOG.EL_ACTION LIKE ? AND EQUIPMENT_LOG.EL_ACTION_CONTENT LIKE ? AND EQUIPMENT_LOG.EL_TYPE LIKE ? AND ACCOUNT.ACC_NAME = ? LIMIT ?,  ?";
 	
-	private static final String QUERYEQUIPMENTLOGSBYCREATEDNAMEANDTIMERANGE=HEAD+"AND EQUIPMENT_LOG.EL_ACTION LIKE ? AND EQUIPMENT_LOG.EL_ACTION_CONTENT LIKE ? AND EQUIPMENT_LOG.EL_TYPE LIKE ? AND EQUIPMENT.EQU_NAME = ? AND EQUIPMENT_LOG.EL_CREATED_DATE >= ? AND EQUIPMENT_LOG.EL_CREATED_DATE <= ? LIMIT ?,  ?";
+	private static final String QUERYEQUIPMENTLOGSBYCREATEDNAMEANDTIMERANGE=HEAD+"AND EQUIPMENT_LOG.EL_ACTION LIKE ? AND EQUIPMENT_LOG.EL_ACTION_CONTENT LIKE ? AND EQUIPMENT_LOG.EL_TYPE LIKE ? AND ACCOUNT.ACC_NAME = ? AND EQUIPMENT_LOG.EL_CREATED_DATE >= ? AND EQUIPMENT_LOG.EL_CREATED_DATE <= ? LIMIT ?,  ?";
 
 	@Override
 	public List<EquipmentLog> queryAll() {
@@ -49,13 +52,13 @@ public class EquipmentLogDaoImpl extends BaseDaoImpl<EquipmentLog>implements Equ
 
 	@Override
 	public List<EquipmentLog> queryEquipmentLogs(String el_action, String el_action_content, String el_type,
-			Integer el_created_id, int begin, int num) {
+			String el_created_name, int begin, int num) {
 		// TODO Auto-generated method stub
 		Object[] parameter=new Object[]{
 				"%"+el_action+"%",  
 				 "%"+el_action_content+"%",   
 				 "%"+el_type+"%",
-				 el_created_id,
+				 el_created_name,
 				 begin,
 				 num
 		};
@@ -82,13 +85,13 @@ public class EquipmentLogDaoImpl extends BaseDaoImpl<EquipmentLog>implements Equ
 
 	@Override
 	public List<EquipmentLog> queryEquipmentLogs(String el_action, String el_action_content, String el_type,
-			Integer el_created_id, String start, String end, int begin, int num) {
+			String el_created_name, String start, String end, int begin, int num) {
 		// TODO Auto-generated method stub
 		Object[] parameter=new Object[]{
 				 "%"+el_action+"%",  
 				 "%"+el_action_content+"%",   
 				 "%"+el_type+"%",
-				 el_created_id,
+				 el_created_name,
 				 start,
 				 end,
 				 begin,

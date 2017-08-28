@@ -53,7 +53,7 @@ public interface AccountMeetingLogDao {
 	 * @return
 	 */
 	List<AccountMeetingLog> queryAccountMeetingLogs(String aml_action, String aml_action_content, String aml_type,
-			Integer aml_created_id, int begin, int num);
+			String aml_created_name, int begin, int num);
 
 	/**
 	 * 
@@ -84,7 +84,7 @@ public interface AccountMeetingLogDao {
 	 *            内容 （成功）
 	 * @param aml_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param aml_created_id
+	 * @param aml_created_name
 	 *            创建人名 （）
 	 * @param start
 	 *            时间范围 （）
@@ -97,6 +97,6 @@ public interface AccountMeetingLogDao {
 	 * @return
 	 */
 	List<AccountMeetingLog> queryAccountMeetingLogs(String aml_action, String aml_action_content, String aml_type,
-			Integer aml_created_id, String start, String end, int begin, int num);
+			String aml_created_name, String start, String end, int begin, int num);
 
 }

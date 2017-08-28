@@ -23,6 +23,11 @@ public class SysParameterLog implements Serializable {
 	private Integer spl_created_id;//SPL_CREATED_ID
 	private String spl_type;//SPL_TYPE
 	private String acc_name;//ACC_NAME
+	
+	
+	public SysParameterLog() {
+		super();
+	}
 	public SysParameterLog(Integer spl_id, String spl_action, String spl_action_content, String spl_created_date,
 			Integer spl_created_id, String spl_type) {
 		super();

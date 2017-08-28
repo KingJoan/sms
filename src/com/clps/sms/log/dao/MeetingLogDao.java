@@ -44,7 +44,7 @@ public interface MeetingLogDao {
 	 *            内容 （成功）
 	 * @param rl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param rl_created_id
+	 * @param rl_created_name
 	 *            创建人名 （）
 	 * @param begin
 	 *            查询起点 （）
@@ -53,7 +53,7 @@ public interface MeetingLogDao {
 	 * @return
 	 */
 	List<MeetingLog> queryMeetingLogs(String rl_action, String rl_action_content, String rl_type,
-			Integer rl_created_id, int begin, int num);
+			String  rl_created_name, int begin, int num);
 
 	/**
 	 * 
@@ -84,7 +84,7 @@ public interface MeetingLogDao {
 	 *            内容 （成功）
 	 * @param rl_type
 	 *            类型 （DEBUG,INFO,WARN,ERROR）
-	 * @param rl_created_id
+	 * @param rl_created_name
 	 *            创建人名 （）
 	 * @param start
 	 *            时间范围 （）
@@ -97,6 +97,6 @@ public interface MeetingLogDao {
 	 * @return
 	 */
 	List<MeetingLog> queryMeetingLogs(String rl_action, String rl_action_content, String al_type,
-			Integer rl_created_id, String start, String end, int begin, int num);
+			String rl_created_name, String start, String end, int begin, int num);
 
 }
